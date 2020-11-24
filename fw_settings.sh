@@ -1,4 +1,5 @@
-apt-get install iptables
+apt-get install iptables iptables-persistent
+
 iptables --policy INPUT DROP
 iptables --policy FORWARD DROP
 
@@ -22,3 +23,5 @@ iptables -A INPUT -p icmp --icmp-type 8 -m state --state NEW,ESTABLISHED,RELATED
 
 iptables -A INPUT -j DROP
 iptables -A FORWARD -j DROP
+
+iptables-save > /etc/iptables/rules.v4
